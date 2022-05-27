@@ -8,6 +8,8 @@ import scala.collection.mutable
 import scala.collection.mutable.Map
 
 object OrderFilter {
+
+  // TODO Use List groupBy
   def collectAge(
                   orders: List[Order],
                 ): mutable.Map[Long, Set[Order]] = {
@@ -32,5 +34,13 @@ object OrderFilter {
       }
     }
     orderMap
+  }
+
+  def select(orders: List[Order], startDate: LocalDate, endDate: LocalDate): List[Order] = {
+    orders.filter(
+      (o: Order) =>
+        (o.date.isAfter(startDate) || o.date.isEqual(startDate)) &&
+          (o.date.isBefore(endDate) || o.date.isEqual(endDate))
+    )
   }
 }
