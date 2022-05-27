@@ -9,6 +9,7 @@ import org.scalatestplus.mockito.MockitoSugar.mock
 
 import java.time.LocalDate
 
+// TODO Empty cases test
 class OrderFilterTest extends AnyFlatSpec with should.Matchers {
   "A order with one 3-month product in the same year" should "return a map with one 3-month order on key 3" in {
     val product = mock[Product]

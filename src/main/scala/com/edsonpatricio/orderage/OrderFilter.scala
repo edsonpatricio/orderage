@@ -9,7 +9,8 @@ import scala.collection.mutable.Map
 
 object OrderFilter {
 
-  // TODO Use List groupBy
+  //TODO: Use List groupBy function
+  //TODO: Replace nested for by higher order functions
   def collectAge(
                   orders: List[Order],
                 ): mutable.Map[Long, Set[Order]] = {

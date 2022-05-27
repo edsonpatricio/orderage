@@ -37,6 +37,7 @@ object Main extends App {
 
   val keys = ageMap.keys
 
+  //TODO: Intervals as CLI arguments
   val interval1to3 = keys.filter(n => n >= 1 && n <= 3).sum
   val interval4to6 = keys.filter(n => n >= 4 && n <= 6).sum
   val interval7to12 = keys.filter(n => n >= 7 && n <= 12).sum
