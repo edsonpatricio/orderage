@@ -19,10 +19,12 @@ Example:
 ```$ java -jar orders.jar "2018-01-01 00:00:00" "2019-01-01 00:00:00"```
 
 Result:
+```
 1-3 months: 200 orders
 4-6 months: 150 orders
 7-12 months: 50 orders
 >12 months: 20 orders
+```
 
 **Bonus feature**
 Add an argument to this tool that allow us to pass a list of intervals instead of having the fixed intervals defined above (“1-3”, “4-6”, “7-12”, “>12”)
