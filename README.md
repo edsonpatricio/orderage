@@ -2,7 +2,7 @@
 
 ## Gather statistics based on placed orders
 
-The purpose of this exercise is to check if older products are still being sold in Dott. Consider the following entities:
+The purpose of this exercise is to check if older products are still being sold. Consider the following entities:
 - **Order**: contains general information about the order (customer name and contact, shipping address, grand total, date when the order was placed, ...)
 - **Item**: information about the purchased item (cost, shipping fee, tax amount, ...)
 - **Product**: information about the product (name, category, weight, price, creation date, ...)
