@@ -5,8 +5,6 @@ ThisBuild / version := "0.1.0"
 ThisBuild / organization := "com.edsonpatricio"
 ThisBuild / organizationName := "orderage"
 
-lazy val slickVersion = "3.3.3"
-
 lazy val root = (project in file("."))
   .settings(
     name := "order-age",
@@ -14,8 +12,6 @@ lazy val root = (project in file("."))
 
     // General Dependencies
     libraryDependencies ++= Seq(
-      "com.typesafe.slick" %% "slick" % slickVersion,
-      "com.typesafe.slick" %% "slick-hikaricp" % slickVersion,
       "org.slf4j" % "slf4j-nop" % "1.6.4",
     ),
 
