@@ -5,36 +5,26 @@ import com.edsonpatricio.orderage.model.Order
 import java.time.temporal.ChronoUnit
 import java.time.{LocalDate, YearMonth}
 import scala.collection.mutable
-import scala.collection.mutable.Map
 
 object OrderFilter {
 
-  //TODO: Use List groupBy function
-  //TODO: Replace nested for by higher order functions
   def collectAge(
                   orders: List[Order],
-                ): mutable.Map[Long, Set[Order]] = {
+                ): Map[Long, Set[Order]] = {
 
-    var orderMap = mutable.Map[Long, Set[Order]]()
-
-    for (order <- orders) {
-      for (item <- order.items) {
-
-        val months = ChronoUnit.MONTHS.between(
-          YearMonth.from(item.product.creationDate),
-          YearMonth.from(order.date)
-        )
-
-        if (orderMap.contains(months)) {
-          orderMap = orderMap ++ mutable.Map(
-            months -> (orderMap(months) + order)
-          )
+    orders.flatMap { order =>
+      order.items.map { item =>
+        ChronoUnit.MONTHS.between(item.product.creationDate, order.date)
+      }.foldLeft(mutable.Map.empty[Long, Set[Order]]) { (orderMap, monthIndex) =>
+        if (orderMap.contains(monthIndex)) {
+          orderMap ++ mutable.Map {
+            monthIndex -> (orderMap(monthIndex) + order)
+          }
         } else {
-          orderMap = orderMap ++ mutable.Map(months -> Set(order))
+          orderMap ++ mutable.Map(monthIndex -> Set(order))
         }
       }
-    }
-    orderMap
+    }.toMap
   }
 
   def select(orders: List[Order], startDate: LocalDate, endDate: LocalDate): List[Order] = {
